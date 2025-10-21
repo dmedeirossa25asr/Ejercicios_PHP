@@ -34,10 +34,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
 if ($asistentes <= 0) {
     echo "El numero de asistentes debe ser mayor que 0.";
+    exit;
 }
 
 $precio_base = 50;
-switch ($_evento){
+switch ($evento){
     case "Taller":
         $precio_persona = 50;
     break;
@@ -47,14 +48,14 @@ switch ($_evento){
     case "Seminario":
         $precio_persona = 40;
     break;
+    default: 
+        $precio_persona = 0;
 }
 
 $precio_total = $precio_base + ($precio_persona * $asistentes);
 
+header("Location: agradecimiento.php?nombre=$nombre&correo=$correo&evento=$evento&asistentes=$asistentes&comentarios=$comentarios&precio_total=$precio_total");
+exit;
+
 }
-
 ?>
-
-<form action="agradecimiento.php" method="POST">
-    Evento: <input type="hidden" name="evento" value="<?php echo $evento; ?>">
-</form>
