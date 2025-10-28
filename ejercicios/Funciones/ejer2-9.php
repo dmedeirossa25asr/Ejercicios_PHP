@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>calcular costos de envío</title>
+<title>Notas de los alumnos</title>
 </head>
 <body>
-<h1>Calculadora de costos de envío</h1>
+<h1>Notas de los alumnos</h1>
 
 <?php
 // Funciones
@@ -36,7 +36,23 @@ function aplicarBonificacion ($promedio){
 }
 
 function calcularResultadoEstudiante ($nombre, $calificaciones){
-    calcularPromedio(80,75,88);
+$promedio = calcularPromedio($calificaciones);
+$promedioConBonificacion = aplicarBonificacion($promedio);
+$estado = esAprobado($promedioConBonificacion);
+
+echo "Estudiante: " . $nombre . "<br>";
+echo "Promedio inicial: " . $promedio . "<br>";
+echo "Promedio con bonificación: " . $promedioConBonificacion . "<br>";
+echo "Estado: " . $estado . "<br><br>";
+}
+
+// Estudiantes
+$estudiantes = ['Ana'=>[80,75,88],
+'Luis'=>[45,50,48],
+'Pedro'=>[92,94,96],];
+
+foreach ($estudiantes as $nombre => $calificaciones){
+    calcularResultadoEstudiante($nombre, $calificaciones);
 }
 
 ?>
