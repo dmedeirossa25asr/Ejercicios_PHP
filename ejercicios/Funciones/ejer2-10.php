@@ -3,17 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>calcular costos de envío</title>
+<title>Rutas</title>
 </head>
 <body>
-<h1>Calculadora de costos de envío</h1>
+<h1>Rutas de entrega</h1>
 
 <?php
-    echo "<p>Este programa calculará el costo de envío de varios paquetes.</p>";
 
-    calcularCostoEnvio(7, 150);
 
-    // Funciones
+// Funciones
     function calcularCostoBase ($peso) {
         if ($peso <= 5){
             return 10;
@@ -63,22 +61,6 @@
         $costoFinal = aplicarDescuento($costoTotal, $distanciaEnvio);
 
         echo "<p>El costo final del envio es: $costoFinal</p>";
-    }
-
-    $paquetes = [
-        ['peso'=>3,'distancia'=>50],
-        ['peso'=>7,'distancia'=>150],
-        ['peso'=>12,'distancia'=>250],
-        ['peso'=>4,'distancia'=>500],
-        ['peso'=>15,'distancia'=>600],
-    ];
-
-    $numero = 2;
-
-    foreach ($paquetes as $paquete){
-        echo "<p>Envio Nº: $numero</p>";
-        calcularCostoEnvio($paquete['peso'], $paquete['distancia']);
-        $numero++;
     }
 ?>
 </body>
