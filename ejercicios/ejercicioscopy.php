@@ -35,11 +35,6 @@ $precios = ["peras"=>[2.5,4],
             "melocoton"=>[4.8,7],
             "banana"=>[4,8.9]                
 ]
-foreach ($precios as $indice => $valor){
-    echo ;
-
-}
-
 
 ?>
 </body>

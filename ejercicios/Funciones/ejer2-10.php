@@ -10,58 +10,38 @@
 
 <?php
 
-
 // Funciones
-    function calcularCostoBase ($peso) {
-        if ($peso <= 5){
-            return 10;
+    include "funciones.php";
+
+
+    function compararRutas ($rutas, $pesoPaquete){
+        $menorCosto = 0;
+        $rutaBarata = "";
+
+        foreach ($rutas as $indice => $distancia){
+            $costo = calcularCostoEnvio($pesoPaquete,$distancia);
+            
+            if ($indice == 0){
+                $menorCosto = $costo;
+                $rutaBarata = $indice;
+            } else {
+                if ($costo < $menorCosto){
+                $menorCosto = $costo;
+                $rutaBarata = $indice;
+            } 
+            }
+
+            echo "Ruta " . $indice+1 . ": Distancia de $distancia km, Costo: $$costo. <br>";
         }
-        elseif ($peso > 5 && $peso <= 10){
-            return 15;
-        }
-        else {
-            return 20 + ($peso - 10) * 1;
-        }
+        echo "<br>La ruta más económica es la " . $rutaBarata+1 . " con un costo de $menorCosto";
+
     }
 
-    function calcularCostoDistancia ($distancia) {
-        $costo = 0;
+    // Simulación
+    $rutas = [120,300,450];
+    $pesoPaquete = 12;
 
-        if ($distancia <= 100){
-            $costo = $distancia * 0.10;
-        }
-        elseif ($distancia > 100 && $distancia <= 400){
-            $costo = 100 * 0.10;
-            $costo += ($distancia - 100) * 0.08;
-        }
-        else {
-            $costo = 100 * 0.10;
-            $costo += 300 * 0.08;
-            $costo += ($distancia - 400) * 0.05;
-        }
-        return $costo;
-    }
-
-    function aplicarDescuento ($envio, $distanciaEnvio) {
-        if ($distanciaEnvio >= 100 && $distanciaEnvio <= 200){
-            return $envio * 0.95;
-        }
-        elseif ($distanciaEnvio > 200) {
-            return $envio * 0.90;
-        } else {
-            return $envio;
-        }
-    }
-
-    function calcularCostoEnvio ($pesoPaquete, $distanciaEnvio){
-        $costoTotal = 0;
-        $costoFinal = 0;
-
-        $costoTotal = calcularCostoBase($pesoPaquete) + calcularCostoDistancia($distanciaEnvio); 
-        $costoFinal = aplicarDescuento($costoTotal, $distanciaEnvio);
-
-        echo "<p>El costo final del envio es: $costoFinal</p>";
-    }
+    compararRutas($rutas, $pesoPaquete);
 ?>
 </body>
 </html>
