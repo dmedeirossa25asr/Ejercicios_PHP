@@ -12,19 +12,23 @@
         Introducir provincia: <input type="text" name="provincia" required><br></br>
         Playa: <input type="radio" name="playa" value="Sí"><br>
         Transporte: 
-        Bus: <input type="checkbox" name="bus">
-        Tren: <input type="checkbox" name="tren">
-        Topo: <input type="checkbox" name="topo">
-        Metro: <input type="checkbox" name="metro"></br>
+        <input type="checkbox" name="bus"> Bus
+        <input type="checkbox" name="tren"> Tren
+        <input type="checkbox" name="topo"> Topo
+        <input type="checkbox" name="metro"> Metro
+        <br>
 
         Servicios: 
-        <select name="servicio">
+        <select name="servicios[]" multiple>
             <option value="Polideportivo">Polideportivo</option>
             <option value="Casa Cultura">Casa Cultura</option>
             <option value="Cine">Cine</option>
             <option value="Biblioteca">Biblioteca</option>
-        </select><br></br>
+        </select>
+        <br></br>
         <input type="submit" name="btn" value="Enviar datos">
+        <input type="submit" name="btn" value="Pueblos registrados">
+        <input type="submit" name="btn" value="Estadisticas">
     </form>
 </body>
 </html>
